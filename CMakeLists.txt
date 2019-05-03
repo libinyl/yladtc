@@ -13,4 +13,3 @@ add_library(yllibc STATIC ${lib_srcs})
 set(lib_tests test/test.c)
 add_executable(yllibc-test ${lib_tests})
 target_link_libraries(yllibc-test yllibc)
-
