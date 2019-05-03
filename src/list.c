@@ -12,3 +12,12 @@ int list_init(list_y *list)
     list->capacity = LIST_INIT_SIZE;
     list->size = 0;
 }
+
+int list_free(list_y *list)
+{
+    if (!list->data) {
+        return -1;
+    }
+
+    free(list->data);
+}

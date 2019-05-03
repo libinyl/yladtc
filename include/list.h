@@ -24,4 +24,6 @@ typedef struct _list
  */
 int list_init(list_y *list);
 
+int list_free(list_y *list);
+
 #endif //LIST_H
