@@ -3,13 +3,13 @@
 #include <stddef.h>
 #include <stdio.h>
 
-void test_list_init()
+static void test_list_init()
 {
     list_y list;
-    list_init(&list);
+    assert(list_init(&list) != -1);
     assert(list.data != NULL);
-    assert(list.size==0);
-    assert(list.capacity>0);
+    assert(list.size == 0);
+    assert(list.capacity > 0);
     printf("[test_list_init] passed.\n");
 }
 
