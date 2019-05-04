@@ -1,5 +1,5 @@
-#ifndef YL_VECTOR_H
-#define YL_VECTOR_H
+#ifndef VECTOR_H
+#define VECTOR_H
 
 #include "def.h"
 

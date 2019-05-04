@@ -16,9 +16,9 @@ int list_init(list_y *list)
 {
     // allocate space for header node
     if (!(*list = malloc(sizeof(node_y))))
-        return -1;
+        return RT_FAILED;
     (*list)->next = NULL;
-    return 0;
+    return RT_SUCCEED;
 }
 
 int list_free(list_y *list)
@@ -34,12 +34,13 @@ int list_append(list_y *list, VAL value)
     while (head->next != NULL)
         head = head->next;
 
-    // then head->next is new node.
+    // then prepare head->next as the new node.
     if (!(head->next = malloc(sizeof(node_y))))
-        return -1;
+        return RT_FAILED;
 
     head->next->data = value;
     head->next->next = NULL;
+    return RT_SUCCEED;
 }
 
 int list_size(list_y list)
@@ -61,7 +62,7 @@ int list_get(list_y list, uint index, VAL *value)
 
     // index must be less than size.
     if (index >= head - list)
-        return -1;
+        return RT_FAILED;
     *value = (head + index + 1)->data;
-    return 1;
+    return RT_SUCCEED;
 }
