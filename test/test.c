@@ -56,6 +56,26 @@ static void test_list_append()
     assert(*(list.data + 1) == 1);
     assert(*(list.data) == 0);
 
+    list_free(&list);
+
+    list_init(&list);
+
+    int largenum = 100000;
+    for (int i = 0; i < largenum; i++) {
+        list_append(&list, i);
+    }
+    assert(list.size == largenum);
+
+    for (int i = 0; i < largenum; i++) {
+        /*
+         * printf("%d ", *(list.data + i));
+         * if (i > 200 && i % 200 == 0) {
+         *     printf("\n");
+         * }
+         */
+        assert(*(list.data + i) == i);
+    }
+
     printf("[test_list_append] passed.\n");
     list_free(&list);
 }

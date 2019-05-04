@@ -10,6 +10,6 @@ set(lib_srcs src/list.c)
 add_library(yladtc STATIC ${lib_srcs})
 
 # test
-set(lib_tests test/test.c)
+set(lib_tests test/test.c test/listwrapper.c)
 add_executable(yladtc-test ${lib_tests})
 target_link_libraries(yladtc-test yladtc)

@@ -16,8 +16,9 @@ typedef struct _list
 /**
  * Initialize the list.
  *
- * Node:you must call this function whenever you want to
- * use the declared list, otherwise the behavior is undefined.
+ * Node:you must call this function before whenever
+ * using the declared (or just freed) list,
+ * otherwise the behavior is undefined.
  *
  * @param list the list to be initialized.
  * @return 0 if memory allocation succeed, otherwise return -1.

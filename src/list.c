@@ -51,11 +51,11 @@ int list_append(list_y *list, VAL value)
     else {
         // resize if needed
         if (list->size == list->capacity) {
-            if (!_resize(list))
+            if (_resize(list))
                 return -1;
         }
 
-        newpos = list->data + 1; // leave list->data untouched
+        newpos = list->data + list->size;
     }
 
     // set the new value
