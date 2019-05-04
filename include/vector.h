@@ -3,9 +3,6 @@
 
 #include "def.h"
 
-
-typedef int VAL;
-
 typedef struct _vector
 {
     VAL *data;      // data space for storage
