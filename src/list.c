@@ -20,4 +20,5 @@ int list_free(list_y *list)
     }
 
     free(list->data);
+    list->data = NULL;
 }

@@ -29,6 +29,7 @@ static void test_list_free()
 int main()
 {
     test_list_init();
+    test_list_free();
     printf("tests all passed.\n");
     return 0;
 }
