@@ -168,6 +168,6 @@ int main()
     test_vector_get();
     test_vector_set();
     test_vector_remove();
-    printf("===tests all passed.===\n");
+    printf("===Tests of [vector] all passed.===\n");
     return 0;
 }

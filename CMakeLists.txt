@@ -10,6 +10,13 @@ set(lib_srcs src/vector.c src/list.c)
 add_library(yladtc STATIC ${lib_srcs})
 
 # test
-set(lib_tests test/tvector.c test/vectorwrapper.c)
-add_executable(yladtc-test ${lib_tests})
-target_link_libraries(yladtc-test yladtc)
+set(lib_tvector test/tvector.c)
+set(lib_tlist test/tlist.c)
+
+## test for vector
+add_executable(yladtc-tvector ${lib_tvector})
+target_link_libraries(yladtc-tvector yladtc)
+
+## test for list
+add_executable(yladtc-tlist ${lib_tlist})
+target_link_libraries(yladtc-tlist yladtc)
