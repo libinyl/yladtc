@@ -22,3 +22,8 @@ int list_free(list_y *list)
     free(list->data);
     list->data = NULL;
 }
+
+int list_isempty(list_y *list)
+{
+    return list->size == 0;
+}

@@ -16,7 +16,7 @@ typedef struct _list
 /**
  * Initialize the list.
  *
- * Node:you must call this function whenever you want
+ * Node:you must call this function whenever you want to
  * use the declared list, otherwise the behavior is undefined.
  *
  * @param list the list to be initialized.
@@ -25,5 +25,7 @@ typedef struct _list
 int list_init(list_y *list);
 
 int list_free(list_y *list);
+
+int list_isempty(list_y *list);
 
 #endif //LIST_H
