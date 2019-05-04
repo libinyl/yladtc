@@ -37,6 +37,27 @@ static void test_list_isempty()
     printf("[test_list_isempty] passed.\n");
 
     /* TODO: add more test case */
+    list_free(&list);
+}
+
+static void test_list_append()
+{
+    list_y list;
+    assert(list_init(&list) == 0);
+
+    assert((list.size == 0));
+
+    assert(list_append(&list, 0) == 0);
+    assert(list.size == 1);
+
+    assert(list_append(&list, 1) == 0);
+    assert(list.size == 2);
+
+    assert(*(list.data + 1) == 1);
+    assert(*(list.data) == 0);
+
+    printf("[test_list_append] passed.\n");
+    list_free(&list);
 }
 
 int main()
@@ -44,6 +65,7 @@ int main()
     test_list_init();
     test_list_free();
     test_list_isempty();
+    test_list_append();
     printf("tests all passed.\n");
     return 0;
 }

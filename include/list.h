@@ -4,11 +4,11 @@
 #include "def.h"
 
 
-typedef int TYPE;
+typedef int VAL;
 
 typedef struct _list
 {
-    TYPE *data;     // data space for storage
+    VAL *data;      // data space for storage
     UINT capacity;  // entire memory size,including empty positon
     UINT size;      // actual number of data
 } list_y;
@@ -27,5 +27,7 @@ int list_init(list_y *list);
 int list_free(list_y *list);
 
 int list_isempty(list_y *list);
+
+int list_append(list_y *list, VAL value);
 
 #endif //LIST_H
