@@ -78,8 +78,23 @@ int vector_get(const vector_y *vector, uint index, VAL *value)
 
 int vector_set(vector_y *vector, uint index, VAL value)
 {
-    if (vector->data == NULL || index + 1 > vector->size )
+    if (vector->data == NULL || index < 0 || index >= vector->size)
         return -1;
 
     *(vector->data + index) = value;
+
+    return 0;
+}
+
+int vector_remove(vector_y *vector, uint index)
+{
+    if (vector->data == NULL || index < 0 || index >= vector->size)
+        return -1;
+
+    for (int i = index; i < vector->size - 1; ++i) {
+        *(vector->data + i) = *(vector->data + 1 + i);
+    }
+    --vector->size;
+
+    return 0;
 }

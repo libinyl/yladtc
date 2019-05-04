@@ -59,4 +59,6 @@ int vector_get(const vector_y *vector, uint index, VAL *value);
  */
 int vector_set(vector_y *vector, uint index, VAL value);
 
+int vector_remove(vector_y *vector, uint index);
+
 #endif //YL_VECTOR_H

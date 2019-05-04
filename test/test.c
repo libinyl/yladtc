@@ -126,6 +126,39 @@ static void test_vector_set()
     vector_free(&vector);
 }
 
+static void test_vector_remove()
+{
+    vector_y vector;
+    assert(vector_init(&vector) == 0);
+
+    int largenum = 10000;
+    for (int i = 0; i < largenum; ++i) {
+        vector_append(&vector, i);
+    }
+
+    int index1 = 100, index2 = 1000;
+    vector_remove(&vector, index1);
+    vector_remove(&vector, index2);
+
+    assert(vector.size == largenum - 2);
+
+    for (int j = 0; j < largenum - 2; ++j) {
+        int out;
+        vector_get(&vector, j, &out);
+        if (j < index1) {
+            assert(out == j);
+        }
+        if (j >= index1 && j < index2) {
+            assert(out == j + 1);
+        }
+        if (j >= index2) {
+            assert(out == j + 2);
+        }
+    }
+
+    printf("[test_vector_remove] passed.\n");
+}
+
 int main()
 {
     test_vector_init();
@@ -134,6 +167,7 @@ int main()
     test_vector_append();
     test_vector_get();
     test_vector_set();
+    test_vector_remove();
     printf("===tests all passed.===\n");
     return 0;
 }
