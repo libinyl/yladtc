@@ -32,11 +32,12 @@ static void test_list_isempty()
 {
     list_y list;
     assert(list_init(&list) == 0);
+    assert(list_isempty(&list) == 1);
 
-    assert(list_isempty(&list) != 0);
+    list_append(&list, 1);
+    assert(list_isempty(&list) == 0);
+
     printf("[test_list_isempty] passed.\n");
-
-    /* TODO: add more test case */
     list_free(&list);
 }
 
@@ -101,6 +102,30 @@ static void test_list_get()
     list_free(&list);
 }
 
+static void test_list_set()
+{
+    list_y list;
+    assert(list_init(&list) == 0);
+
+    assert(list_set(&list, 0, 0) == -1);
+
+    int largenum = 10000;
+    for (int i = 0; i < largenum; ++i) {
+        list_append(&list, i);
+    }
+    for (int j = 0; j < largenum; ++j) {
+        list_set(&list, j, 2 * j);
+    }
+    for (int k = 0; k < largenum; ++k) {
+        int out;
+        list_get(&list, k, &out);
+        assert(out == 2 * k);
+    }
+
+    printf("[test_list_set] passed.\n");
+    list_free(&list);
+}
+
 int main()
 {
     test_list_init();
@@ -108,6 +133,7 @@ int main()
     test_list_isempty();
     test_list_append();
     test_list_get();
-    printf("tests all passed.\n");
+    test_list_set();
+    printf("===tests all passed.===\n");
     return 0;
 }

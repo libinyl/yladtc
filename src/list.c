@@ -75,3 +75,11 @@ int list_get(const list_y *list, uint index, VAL *value)
 
     return 0;
 }
+
+int list_set(list_y *list, uint index, VAL value)
+{
+    if (list->data == NULL || index + 1 > list->size )
+        return -1;
+
+    *(list->data + index) = value;
+}

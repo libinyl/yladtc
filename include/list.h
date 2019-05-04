@@ -48,4 +48,6 @@ int list_append(list_y *list, VAL value);
  */
 int list_get(const list_y *list, uint index, VAL *value);
 
+int list_set(list_y *list, uint index, VAL value);
+
 #endif //LIST_H
