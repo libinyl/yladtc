@@ -9,8 +9,8 @@ typedef int TYPE;
 typedef struct _list
 {
     TYPE *data;     // data space for storage
-    UINT capacity;   // entire memory size,including empty positon
-    UINT size;       // actual number of data
+    UINT capacity;  // entire memory size,including empty positon
+    UINT size;      // actual number of data
 } list_y;
 
 /**
@@ -20,7 +20,7 @@ typedef struct _list
  * use the declared list, otherwise the behavior is undefined.
  *
  * @param list the list to be initialized.
- * @return -1 if memory allocation falied, otherwise return 1.
+ * @return -1 if memory allocation falied, otherwise return 0.
  */
 int list_init(list_y *list);
 

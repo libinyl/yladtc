@@ -11,6 +11,7 @@ int list_init(list_y *list)
     }
     list->capacity = LIST_INIT_SIZE;
     list->size = 0;
+    return 0;
 }
 
 int list_free(list_y *list)
@@ -21,6 +22,7 @@ int list_free(list_y *list)
 
     free(list->data);
     list->data = NULL;
+    return 0;
 }
 
 int list_isempty(list_y *list)
