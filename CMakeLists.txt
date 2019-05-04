@@ -6,10 +6,10 @@ set(CMAKE_C_STANDARD 99)
 include_directories(include)
 
 # library
-set(lib_srcs src/list.c)
+set(lib_srcs src/vector.c)
 add_library(yladtc STATIC ${lib_srcs})
 
 # test
-set(lib_tests test/test.c test/listwrapper.c)
+set(lib_tests test/test.c test/vectorwrapper.c)
 add_executable(yladtc-test ${lib_tests})
 target_link_libraries(yladtc-test yladtc)
