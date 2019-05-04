@@ -1,2 +1,1 @@
-typedef int             INT;
-typedef unsigned int    UINT;
+typedef unsigned int    uint;

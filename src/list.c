@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-const UINT LIST_INIT_SIZE = 16;  // default capacity size
+const uint LIST_INIT_SIZE = 16;  // default capacity size
 
 int list_init(list_y *list)
 {
@@ -25,7 +25,7 @@ int list_free(list_y *list)
     return 0;
 }
 
-int list_isempty(list_y *list)
+int list_isempty(const list_y *list)
 {
     return list->size == 0;
 }
@@ -64,4 +64,14 @@ int list_append(list_y *list, VAL value)
 
     return 0;
 
+}
+
+int list_get(const list_y *list, uint index, VAL *value)
+{
+    if (list->size == 0 || list->data == NULL)
+        return -1;
+
+    *value = *(list->data + index);
+
+    return 0;
 }
