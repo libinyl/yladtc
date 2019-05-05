@@ -29,14 +29,21 @@ static void test_list_free()
     second->data = 2;
     second->next = NULL;
 
+    node_y *third = malloc(sizeof(node_y));
+    third->data = 3;
+    third->next = NULL;
+
     // assemble nodes.
     list->first = first;
     first->next = second;
+    second->next = third;
 
     list_free(&list);
 
-    assert(second == NULL);
-    assert(first == NULL);
+    assert(third->next == NULL);
+    assert(second->next == NULL);
+    assert(first->next == NULL);
+    assert(list->first == NULL);
 
     PRINT_PASSED_INFO();
 }

@@ -22,6 +22,7 @@ void __list_free(node_y *pnode)
     }
     __list_free(pnode->next);
     pnode->next = NULL;
+    free(pnode);
 }
 
 void list_free(list_y *plist)
