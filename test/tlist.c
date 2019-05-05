@@ -33,17 +33,21 @@ static void test_list_free()
     third->data = 3;
     third->next = NULL;
 
-    // assemble nodes.
+    list_y list_bak = list;
+
+    // concat nodes.
     list->first = first;
     first->next = second;
     second->next = third;
 
+
     list_free(&list);
 
-    assert(third->next == NULL);
+    assert(list == NULL);
+    assert(list->first == NULL);    //段错误！
     assert(second->next == NULL);
     assert(first->next == NULL);
-    assert(list->first == NULL);
+    assert(list_bak->first == NULL); //段错误！
 
     PRINT_PASSED_INFO();
 }
@@ -52,9 +56,6 @@ int main()
 {
     test_list_init();
     test_list_free();
-//    test_list_size();
-    //  test_list_free();
-//    test_list_append();
-    //printf("===Tests of [list] all passed.===\n");
+
     PRINT_ALL_PASSED_INFO(list);
 }

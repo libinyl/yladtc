@@ -20,18 +20,21 @@ void __list_free(node_y *pnode)
         free(pnode);
         return;
     }
-    __list_free(pnode->next);
-    pnode->next = NULL;
-    free(pnode);
+    else {
+        __list_free(pnode->next);
+        pnode->next = NULL;
+        free(pnode);
+        return;
+    }
 }
 
 void list_free(list_y *plist)
 {
-    if(plist==NULL)
+    if (plist == NULL)
         return;
 
-    list_y list = *plist;
-    __list_free(list->first);
-    list->first = NULL;
-    //free(plist);
+    __list_free((*plist)->first);
+    (*plist)->first = NULL;
+    free(*plist);   //注：此处free之后，first的值不再是NULL，而是恢复原样！
+    *plist = NULL;
 }
