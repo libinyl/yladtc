@@ -33,5 +33,5 @@ void list_free(list_y *plist)
     list_y list = *plist;
     __list_free(list->first);
     list->first = NULL;
-    free(plist);
+    //free(plist);
 }
