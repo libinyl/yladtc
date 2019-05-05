@@ -34,7 +34,6 @@ void list_free(list_y *plist)
         return;
 
     __list_free((*plist)->first);
-    (*plist)->first = NULL;
-    free(*plist);   //注：此处free之后，first的值不再是NULL，而是恢复原样！
+    free(*plist);
     *plist = NULL;
 }

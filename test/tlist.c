@@ -33,8 +33,6 @@ static void test_list_free()
     third->data = 3;
     third->next = NULL;
 
-    list_y list_bak = list;
-
     // concat nodes.
     list->first = first;
     first->next = second;
@@ -43,11 +41,9 @@ static void test_list_free()
 
     list_free(&list);
 
-    assert(list == NULL);
-    assert(list->first == NULL);    //段错误！
+    assert(list == NULL); //no need to test list->first
     assert(second->next == NULL);
     assert(first->next == NULL);
-    assert(list_bak->first == NULL); //段错误！
 
     PRINT_PASSED_INFO();
 }
