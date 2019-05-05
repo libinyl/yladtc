@@ -1,3 +1,4 @@
+#include "tdef.h"
 #include "list.h"
 #include <string.h>
 #include <assert.h>
@@ -7,56 +8,46 @@
 
 static void test_list_init()
 {
-    list_y list;
+    list_y list = NULL;
     list_init(&list);
 
     assert(list != NULL);
-    assert(list->next == NULL);
-    assert(list_size(list) == 0);
-
-    printf("[test_list_init] passed.\n");
-    free(list);
+    assert(list->first == NULL);
+    PRINT_PASSED_INFO();
 }
 
 static void test_list_free()
 {
-
-}
-
-static void test_list_get()
-{
     list_y list;
     list_init(&list);
 
-    list_append(&list, 0);
-    list_append(&list, 1);
+    // init two node
+    node_y *first = malloc(sizeof(node_y));
+    first->data = 1;
 
-    int out = 0;
-    assert(list_get(list, 0, &out) == 0);
-    assert(out == 0);
-    assert(list_get(list, 1, &out) == 0);
-    assert(out == 1);
+    node_y *second = malloc(sizeof(node_y));
+    second->data = 2;
+    second->next = NULL;
 
-    //list_free();
-}
+    // assemble nodes.
+    list->first = first;
+    first->next = second;
 
-static int test_list_append()
-{
-    list_y list;
-    list_init(&list);
+    list_free(&list);
 
-    int largenum = 100000;
-    for (int i = 0; i < largenum; ++i) {
-        list_append(&list, i);
-    }
-    for (int j = 0; j < largenum; ++j) {
+    assert(second == NULL);
+    assert(first == NULL);
 
-    }
+    PRINT_PASSED_INFO();
 }
 
 int main()
 {
     test_list_init();
-    //test_list_append();
-    printf("===Tests of [list] all passed.===\n");
+    test_list_free();
+//    test_list_size();
+    //  test_list_free();
+//    test_list_append();
+    //printf("===Tests of [list] all passed.===\n");
+    PRINT_ALL_PASSED_INFO(list);
 }

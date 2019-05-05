@@ -1,3 +1,4 @@
+#include "tdef.h"
 #include "vector.h"
 #include <assert.h>
 #include <stddef.h>
@@ -11,10 +12,10 @@ static void test_vector_init()
     assert(vector.data != NULL);
     assert(vector.size == 0);
     assert(vector.capacity > 0);
-    printf("[test_vector_init] passed.\n");
+
+    PRINT_PASSED_INFO();
 
     free(vector.data);
-    vector.data = NULL;
 }
 
 static void test_vector_free()
@@ -25,7 +26,7 @@ static void test_vector_free()
     vector_free(&vector);
     assert(vector.data == NULL);
 
-    printf("[test_vector_free] passed.\n");
+    PRINT_PASSED_INFO();
 }
 
 static void test_vector_isempty()
@@ -37,7 +38,7 @@ static void test_vector_isempty()
     vector_append(&vector, 1);
     assert(vector_isempty(&vector) == 0);
 
-    printf("[test_vector_isempty] passed.\n");
+    PRINT_PASSED_INFO();
     vector_free(&vector);
 }
 
@@ -69,15 +70,15 @@ static void test_vector_append()
 
     for (int i = 0; i < largenum; i++) {
         /*
-         * printf("%d ", *(vector.data + i));
+         * PRINT_PASSED_INFO();
          * if (i > 200 && i % 200 == 0) {
-         *     printf("\n");
+         *     PRINT_PASSED_INFO();
          * }
          */
         assert(*(vector.data + i) == i);
     }
 
-    printf("[test_vector_append] passed.\n");
+    PRINT_PASSED_INFO();
     vector_free(&vector);
 }
 
@@ -98,7 +99,7 @@ static void test_vector_get()
     assert(vector_get(&vector, 0, &val) == 0);
     assert(val == 0);
 
-    printf("[test_vector_get] passed.\n");
+    PRINT_PASSED_INFO();
     vector_free(&vector);
 }
 
@@ -122,7 +123,7 @@ static void test_vector_set()
         assert(out == 2 * k);
     }
 
-    printf("[test_vector_set] passed.\n");
+    PRINT_PASSED_INFO();
     vector_free(&vector);
 }
 
@@ -156,7 +157,7 @@ static void test_vector_remove()
         }
     }
 
-    printf("[test_vector_remove] passed.\n");
+    PRINT_PASSED_INFO();
 }
 
 int main()
@@ -168,6 +169,7 @@ int main()
     test_vector_get();
     test_vector_set();
     test_vector_remove();
-    printf("===Tests of [vector] all passed.===\n");
+
+    PRINT_ALL_PASSED_INFO(vector);
     return 0;
 }
