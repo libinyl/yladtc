@@ -21,7 +21,7 @@ static void test_list_free()
     list_y list;
     list_init(&list);
 
-    // init two node
+    // prepare three nodes
     node_y *first = malloc(sizeof(node_y));
     first->data = 1;
 
@@ -33,7 +33,7 @@ static void test_list_free()
     third->data = 3;
     third->next = NULL;
 
-    // concat nodes.
+    // concat the nodes.
     list->first = first;
     first->next = second;
     second->next = third;
