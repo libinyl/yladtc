@@ -38,7 +38,7 @@ void list_free(list_y *plist)
     *plist = NULL;
 }
 
-bool list_isempty(const list_y list)
+bool list_isempty(list_y list)
 {
     return list->first == NULL;
 }
@@ -51,4 +51,24 @@ int list_clear(list_y *plist)
     __list_free((*plist)->first);
     (*plist)->first = NULL;
     return RT_SUCCEED;
+}
+
+uint list_size(list_y list)
+{
+
+    if (list == NULL)
+        return 0;
+
+    node_y *tmpnode = list->first;
+    if (tmpnode == NULL)
+        return 0;
+
+    uint size = 1;
+    while (tmpnode->next != NULL) {
+        tmpnode = tmpnode->next;
+        ++size;
+    }
+
+    return size;
+
 }

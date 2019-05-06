@@ -83,12 +83,45 @@ static void test_list_clear()
     list_free(&list);
 }
 
+static void test_list_size()
+{
+    list_y list = NULL;
+    list_init(&list);
+
+    assert(list_size(list) == 0);
+
+    // prepare three nodes
+    node_y *first = malloc(sizeof(node_y));
+    first->data = 1;
+
+    node_y *second = malloc(sizeof(node_y));
+    second->data = 2;
+    second->next = NULL;
+
+    node_y *third = malloc(sizeof(node_y));
+    third->data = 3;
+    third->next = NULL;
+
+    // concat the nodes.
+    list->first = first;
+    first->next = second;
+    second->next = third;
+
+    assert(list_size(list) == 3);
+    list_free(&list);
+
+    assert(list_size(list) == 0);
+
+    PRINT_PASSED_INFO();
+}
+
 int main()
 {
     test_list_init();
     test_list_free();
     test_list_isempty();
     test_list_clear();
+    test_list_size();
 
     PRINT_ALL_PASSED_INFO(list);
 }

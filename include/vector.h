@@ -6,7 +6,7 @@
 typedef struct _vector
 {
     VAL *data;      // data space for storage
-    uint capacity;  // entire memory size,including empty positon
+    uint capacity;  // entire memory size,including empty position
     uint size;      // actual number of data
 } vector_y;
 
