@@ -41,17 +41,54 @@ static void test_list_free()
 
     list_free(&list);
 
-    assert(list == NULL); //no need to test list->first
-    assert(second->next == NULL);
-    assert(first->next == NULL);
+    assert(list == NULL); //no need to test list->first and other node.
+    //todo memory tests.
 
     PRINT_PASSED_INFO();
+}
+
+static void test_list_isempty()
+{
+    list_y list;
+    list_init(&list);
+
+    assert(list_isempty(list) == true);
+
+    // prepare three nodes
+    node_y *first = malloc(sizeof(node_y));
+    first->data = 1;
+    first->next = NULL;
+
+    list->first = first;
+    assert(list_isempty(list) == false);
+
+    //todo: test about appending.
+    PRINT_PASSED_INFO();
+    list_free(&list);
+
+}
+
+static void test_list_clear()
+{
+    list_y list = NULL;
+
+    assert(list_clear(&list) == -1);
+    list_init(&list);
+
+    assert(list_clear(&list) == 0);
+
+    //todo: test about appending.
+
+    PRINT_PASSED_INFO();
+    list_free(&list);
 }
 
 int main()
 {
     test_list_init();
     test_list_free();
+    test_list_isempty();
+    test_list_clear();
 
     PRINT_ALL_PASSED_INFO(list);
 }

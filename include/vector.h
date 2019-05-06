@@ -31,7 +31,7 @@ int vector_init(vector_y *vector);
  */
 int vector_free(vector_y *vector);
 
-int vector_isempty(const vector_y *vector);
+bool vector_isempty(const vector_y *vector);
 
 int vector_append(vector_y *vector, VAL value);
 

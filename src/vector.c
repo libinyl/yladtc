@@ -25,7 +25,7 @@ int vector_free(vector_y *vector)
     return RT_SUCCEED;
 }
 
-int vector_isempty(const vector_y *vector)
+bool vector_isempty(const vector_y *vector)
 {
     return vector->size == 0;
 }

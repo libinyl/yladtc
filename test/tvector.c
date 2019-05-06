@@ -33,10 +33,10 @@ static void test_vector_isempty()
 {
     vector_y vector;
     assert(vector_init(&vector) == 0);
-    assert(vector_isempty(&vector) == 1);
+    assert(vector_isempty(&vector) == true);
 
     vector_append(&vector, 1);
-    assert(vector_isempty(&vector) == 0);
+    assert(vector_isempty(&vector) == false);
 
     PRINT_PASSED_INFO();
     vector_free(&vector);

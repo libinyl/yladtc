@@ -37,3 +37,18 @@ void list_free(list_y *plist)
     free(*plist);
     *plist = NULL;
 }
+
+bool list_isempty(const list_y list)
+{
+    return list->first == NULL;
+}
+
+int list_clear(list_y *plist)
+{
+    if (plist == NULL || *plist == NULL)
+        return RT_FAILED;
+
+    __list_free((*plist)->first);
+    (*plist)->first = NULL;
+    return RT_SUCCEED;
+}
