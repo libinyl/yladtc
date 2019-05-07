@@ -72,3 +72,36 @@ uint list_size(list_y list)
     return size;
 
 }
+
+int list_append(list_y *plist, VAL val)
+{
+    list_y list = *plist;
+    if (list == NULL)
+        return RT_FAILED;
+
+    node_y *newnode = NULL;
+    if (NULL == (newnode = malloc(sizeof(node_y))))
+        return RT_FAILED;
+
+    //config the new node.
+    newnode->data = val;
+    newnode->next = NULL;
+
+
+    if (list->first == NULL) {
+        // concat the nodes.
+        list->first = newnode;
+        list->first->next = NULL;
+        return RT_SUCCEED;
+    }
+
+    // go to tail.
+    node_y *tmpnode = list->first;
+
+    while (tmpnode->next != NULL) {
+        tmpnode = tmpnode->next;
+    }
+    tmpnode->next = newnode;
+
+    return RT_SUCCEED;
+}

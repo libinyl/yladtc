@@ -115,6 +115,24 @@ static void test_list_size()
     PRINT_PASSED_INFO();
 }
 
+static void test_list_append()
+{
+    list_y list = NULL;
+
+    assert(list_append(&list, 1) == -1);
+    assert(list_size(list) == 0);
+
+    list_init(&list);
+    assert(list_append(&list, 1) == 0);
+
+    assert(list->first->data == 1);
+
+    //todo :more large data test.
+
+    PRINT_PASSED_INFO();
+    list_free(&list);
+}
+
 int main()
 {
     test_list_init();
@@ -122,6 +140,7 @@ int main()
     test_list_isempty();
     test_list_clear();
     test_list_size();
+    test_list_append();
 
     PRINT_ALL_PASSED_INFO(list);
 }

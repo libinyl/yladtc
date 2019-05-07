@@ -46,4 +46,6 @@ int list_clear(list_y *plist);
  */
 uint list_size(list_y list);
 
+int list_append(list_y *plist, VAL val);
+
 #endif //LIST_H
